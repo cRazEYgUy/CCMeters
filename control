@@ -1,0 +1,10 @@
+Package: org.thebigboss.ccmeters
+Name: CCMeters
+Depends: firmware (>= 7.0), mobilesubstrate, de.j-gessner.ccloader, preferenceloader
+Version: 2.0-dev
+Architecture: iphoneos-arm
+Description: System stats in the Control Center.
+Homepage: http://sticktron.com
+Author: Sticktron <sticktron@hotmail.com>
+Section: Addons (ControlCenter)
+Icon: file:///Library/PreferenceBundles/CCMetersSettings.bundle/Icon.png

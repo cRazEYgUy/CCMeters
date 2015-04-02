@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>title</key>
+	<string>CCMeters</string>
+	
+	<key>items</key>
+	<array>
+		
+		
+		<!-- Logo / Help-->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>
+To enable CCMeters open Settings &gt; CCLoader.</string>
+		</dict>
+		
+		<dict>
+			<key>cellClass</key>
+			<string>CCMetersTitleCell</string>
+			<key>height</key>
+			<string>88</string>
+		</dict>
+		
+		
+		<!-- [] Meters (sets EnabledMeters and DisabledMeters) -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Choose which meters to show, and change the order in which they appear.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Meters</string>
+			<key>detail</key>
+			<string>CCMetersMeterList</string>
+		</dict>
+		
+		
+		<!-- [] Style -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Style</string>
+		</dict>
+		
+		<!-- Icon Color -->
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Icon Color</string>
+			<key>key</key>
+			<string>IconColor</string>
+			<key>detail</key>
+			<string>CCMetersColorPicker</string>
+			<key>cellClass</key>
+			<string>CCMetersColorPickerLinkCell</string>
+			<key>default</key>
+			<string>translucent</string>
+		</dict>
+		
+		<!-- Text Color -->
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Text Color</string>
+			<key>key</key>
+			<string>TextColor</string>
+			<key>detail</key>
+			<string>CCMetersColorPicker</string>
+			<key>cellClass</key>
+			<string>CCMetersColorPickerLinkCell</string>
+			<key>default</key>
+			<string>translucent</string>
+		</dict>
+		
+		<!-- Bold Text -->
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>label</key>
+			<string>Use Bold Text</string>
+			<key>key</key>
+			<string>BoldText</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.sticktron.ccmeters</string>
+			<key>PostNotification</key>
+			<string>com.sticktron.ccmeters.settings-changed</string>
+		</dict>
+		
+		
+		<!-- [] Support -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Support</string>
+		</dict>
+		
+		<!-- Email -->
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Contact me</string>
+			<key>icon</key>
+			<string>email.png</string>
+			<key>action</key>
+			<string>openEmail</string>
+		</dict>
+		
+		<!-- Twitter -->
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Follow me on Twitter</string>
+			<key>icon</key>
+			<string>twitter.png</string>
+			<key>action</key>
+			<string>openTwitter</string>
+		</dict>
+		
+		<!-- Source Code -->
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Source code</string>
+			<key>icon</key>
+			<string>github.png</string>
+			<key>action</key>
+			<string>openGitHub</string>
+		</dict>
+
+		<!-- Tip Me -->
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Tip me if you like this tweak :)</string>
+			<key>icon</key>
+			<string>paypal.png</string>
+			<key>action</key>
+			<string>openPayPal</string>
+		</dict>
+
+
+
+		<!-- [] Try NCMeters -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Also Available</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>NCMeters</string>
+			<key>icon</key>
+			<string>NCMeters.png</string>
+			<key>action</key>
+			<string>openNCMetersInCydia</string>
+		</dict>
+		
+		
+		
+		<!-- [] Visit Website -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Visit my website</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Sticktron's Lab</string>
+			<key>icon</key>
+			<string>web.png</string>
+			<key>action</key>
+			<string>openSticktronWeb</string>
+		</dict>
+
+
+		<!-- [] Credits -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Copyright (c) 2015 Sticktron.
+
+			</string>
+		</dict>
+		
+	</array>
+</dict>
+</plist>

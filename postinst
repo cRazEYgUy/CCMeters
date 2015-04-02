@@ -1,0 +1,2 @@
+#! /bin/sh
+find /private/var/mobile/Library/Preferences/ -name 'com.sticktron.ccmeters.plist' -exec rm {} \;

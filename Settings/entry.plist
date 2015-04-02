@@ -1,0 +1,10 @@
+{
+	entry = {
+		bundle = CCMetersSettings;
+		cell = PSLinkCell;
+		detail = "CCMetersSettingsController";
+		icon = "Icon.png";
+		isController = 1;
+		label = CCMeters;
+	};
+}
