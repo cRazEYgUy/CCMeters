@@ -7,7 +7,7 @@ include theos/makefiles/common.mk
 
 BUNDLE_NAME = CCMetersSettings
 CCMetersSettings_CFLAGS = -fobjc-arc
-CCMetersSettings_FILES = CCMetersSettings.m CCMetersMeterList.m CCMetersColorPicker.m CCMetersColorPickerLinkCell.m ../UIColor-Additions.m
+CCMetersSettings_FILES = CCMetersSettings.m CCMetersMeterList.m CCMetersColorPicker.m CCMetersColorPickerLinkCell.m CCMetersTitleCell.m ../UIColor-Additions.m
 CCMetersSettings_INSTALL_PATH = /Library/PreferenceBundles
 CCMetersSettings_FRAMEWORKS = UIKit CoreGraphics Social
 CCMetersSettings_PRIVATE_FRAMEWORKS = Preferences

@@ -1,6 +1,6 @@
 //
 //  Privates.h
-//  NCMeters
+//  CCMeters
 //
 //  Private APIs.
 //

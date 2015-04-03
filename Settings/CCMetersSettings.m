@@ -2,7 +2,7 @@
 //  CCMetersSettings.m
 //  CCMeters Settings
 //
-//  Copyright (c) 2015 Sticktron. All rights reserved.
+//  Copyright (c) 2014-2015 Sticktron. All rights reserved.
 //
 //
 
@@ -10,13 +10,12 @@
 #import "../DebugLog.h"
 
 #import "Headers/PSListController.h"
-#import "Headers/PSTableCell.h"
-#import "../UIColor-Additions.h"
 #import <Social/Social.h>
 
+
+static NSString * const kBundlePath = @"/Library/PreferenceBundles/CCMetersSettings.bundle";
 static NSString * const kIconColorSpecID = @"Icon Color";
 static NSString * const kTextColorSpecID = @"Text Color";
-static NSString * const kResourcePath = @"/Library/PreferenceBundles/CCMetersSettings.bundle";
 
 
 
@@ -49,7 +48,7 @@ static NSString * const kResourcePath = @"/Library/PreferenceBundles/CCMetersSet
 	[super viewDidLoad];
 	
 	// add a heart button to the navbar
-	NSString *path = [kResourcePath stringByAppendingPathComponent:@"heart"];
+	NSString *path = [kBundlePath stringByAppendingPathComponent:@"heart"];
 	UIImage *heartImage = [[UIImage alloc] initWithContentsOfFile:path];
 	
 	UIBarButtonItem *heartButton = [[UIBarButtonItem alloc] initWithImage:heartImage
@@ -109,52 +108,12 @@ static NSString * const kResourcePath = @"/Library/PreferenceBundles/CCMetersSet
 	SLComposeViewController *composeController = [SLComposeViewController
 												  composeViewControllerForServiceType:SLServiceTypeTwitter];
 	
-	[composeController setInitialText:@"I'm using #CCMeters by @Sticktron and I love it! Get it free on Cydia."];
+	[composeController setInitialText:@"I'm using #CCMeters by @Sticktron to keep an eye on performance!"];
 	
 	[self presentViewController:composeController
 					   animated:YES
 					 completion:nil];
-
 }
 
 @end
-
-
-//------------------------------------------------------------------------------
-
-
-@interface CCMetersTitleCell : PSTableCell
-@end
-
-
-@implementation CCMetersTitleCell
-
-- (instancetype)initWithSpecifier:(PSSpecifier *)specifier {
-	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyTitleCell" specifier:specifier];
-	return self;
-}
-
-- (instancetype)initWithStyle:(int)style reuseIdentifier:(NSString *)reuseIdentifier specifier:(PSSpecifier *)specifier {
-	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier specifier:specifier];
-	
-	if (self) {
-		self.backgroundColor = UIColor.whiteColor;
-		
-		NSString *path = [kResourcePath stringByAppendingPathComponent:@"logo"];
-		UIImage *logo = [[UIImage alloc] initWithContentsOfFile:path];
-		
-		UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
-		logoView.frame = self.contentView.bounds;
-		logoView.contentMode = UIViewContentModeCenter;
-		logoView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-		
-		[self.contentView addSubview:logoView];
-	}
-	return self;
-}
-
-@end
-
-
-//------------------------------------------------------------------------------
 

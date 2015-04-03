@@ -2,7 +2,7 @@
 //  CCMetersColorPickerLinkCell.m
 //  CCMeters Settings
 //
-//  Copyright (c) 2015 Sticktron. All rights reserved.
+//  Copyright (c) 2014-2015 Sticktron. All rights reserved.
 //
 //
 
@@ -28,8 +28,8 @@ static CFStringRef const kPrefsAppID = CFSTR("com.sticktron.ccmeters");
 
 - (id)initWithStyle:(int)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3 {
 	self = [super initWithStyle:arg1 reuseIdentifier:arg2 specifier:arg3];
+	
 	if (self) {
-		
 		_valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 32)];
 		_valueLabel.font = [UIFont systemFontOfSize:12];
 		_valueLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1];

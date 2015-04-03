@@ -4,7 +4,7 @@
 //
 //  System stats widget for the Control Center.
 //
-//  Copyright (c) 2015 Sticktron. All rights reserved.
+//  Copyright (c) 2014-2015 Sticktron. All rights reserved.
 //
 //
 

@@ -1,8 +1,8 @@
 //
-//  CCMetersColorPickerr.m
+//  CCMetersColorPicker.m
 //  CCMeters Settings
 //
-//  Copyright (c) 2015 Sticktron. All rights reserved.
+//  Copyright (c) 2014-2015 Sticktron. All rights reserved.
 //
 //
 
@@ -19,6 +19,7 @@ static CFStringRef const kPrefsNotification = CFSTR("com.sticktron.ccmeters.sett
 
 static NSString * const kNameKey = @"name";
 static NSString * const kHexKey = @"hex";
+
 
 
 @interface CCMetersColorPicker : PSViewController <UITableViewDataSource, UITableViewDelegate>
@@ -48,11 +49,50 @@ static NSString * const kHexKey = @"hex";
 				@"title": 	@"Special",
 				@"colors": 	@[ @{ kNameKey: @"Translucent", kHexKey: @"translucent" } ]
 			},
-			@{ @"title": @"iOS Palette", @"colors": [self iOSColors] },
-			@{ @"title": @"Crayons", @"colors": [self crayonColors] }
+			@{
+				@"title": @"iOS Palette",
+				@"colors": [self sortPaletteByHue:[self iOSColors]]
+			},
+			@{
+				@"title": @"Crayons",
+				@"colors": [self sortPaletteByHue:[self crayonColors]]
+			}
 		];
 	}
 	return _palettes;
+}
+
+- (NSArray *)sortPaletteByHue:(NSArray *)palette {
+	NSArray *sortedPalette = [palette sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *color1, NSDictionary *color2) {
+	
+		CGFloat hue, saturation, brightness, alpha;
+		[[UIColor colorFromHexString:color1[kHexKey]] getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+		
+		CGFloat hue2, saturation2, brightness2, alpha2;
+		[[UIColor colorFromHexString:color2[kHexKey]] getHue:&hue2 saturation:&saturation2 brightness:&brightness2 alpha:&alpha2];
+		
+		if (hue < hue2) {
+			return NSOrderedAscending;
+		} else if (hue > hue2) {
+			return NSOrderedDescending;
+		}
+		
+		if (saturation < saturation2) {
+			return NSOrderedAscending;
+		} else if (saturation > saturation2) {
+			return NSOrderedDescending;
+		}
+		
+		if (brightness < brightness2) {
+			return NSOrderedAscending;
+		} else if (brightness > brightness2) {
+			return NSOrderedDescending;
+		}
+		
+		return NSOrderedSame;
+	}];
+	
+	return sortedPalette;
 }
 
 - (void)loadView {
@@ -219,11 +259,11 @@ static NSString * const kHexKey = @"hex";
 		@{ kNameKey: @"System Blue", 	kHexKey: @"#007AFF" },
 		@{ kNameKey: @"Marine Blue", 	kHexKey: @"#34AADC" },
 		@{ kNameKey: @"Light Blue", 	kHexKey: @"#5AC8FA" },
-		@{ kNameKey: @"System Green", 	kHexKey: @"#4CD964" },
 		@{ kNameKey: @"Pink", 			kHexKey: @"#FF2D55" },
 		@{ kNameKey: @"System Red", 	kHexKey: @"#FF3B30" },
 		@{ kNameKey: @"Orange", 		kHexKey: @"#FF9500" },
 		@{ kNameKey: @"Yellow", 		kHexKey: @"#FFCC00" },
+		@{ kNameKey: @"System Green", 	kHexKey: @"#4CD964" },
 		@{ kNameKey: @"Gray", 			kHexKey: @"#8E8E93" }
 		
 	];
@@ -234,7 +274,7 @@ static NSString * const kHexKey = @"hex";
 	// These are the crayons from the OS X color picker.
 	
 	return @[
-			 
+		
 		@{ kNameKey: @"Snow",			kHexKey: @"#FFFFFF" }, //White
 		@{ kNameKey: @"Mercury",		kHexKey: @"#E6E6E6" },
 		@{ kNameKey: @"Silver", 		kHexKey: @"#CCCCCC" },
@@ -248,31 +288,43 @@ static NSString * const kHexKey = @"hex";
 		@{ kNameKey: @"Lead", 			kHexKey: @"#191919" },
 		@{ kNameKey: @"Licorice", 		kHexKey: @"#000000" }, //Black
 		
-		@{ kNameKey: @"Strawberry", 	kHexKey: @"#FF0080" },
-		@{ kNameKey: @"Marascino", 		kHexKey: @"#FF0000" }, //R
+		
+		@{ kNameKey: @"Cayenne", 		kHexKey: @"#800000" },
+		@{ kNameKey: @"Marascino", 		kHexKey: @"#FF0000" }, ////R
 		@{ kNameKey: @"Salmon", 		kHexKey: @"#FF6666" },
+		@{ kNameKey: @"Mocha", 			kHexKey: @"#804000" },
 		@{ kNameKey: @"Tangerine", 		kHexKey: @"#FF8000" },
 		@{ kNameKey: @"Cantaloupe", 	kHexKey: @"#FFCC66" },
-		@{ kNameKey: @"Lemon", 			kHexKey: @"#FFFF00" }, //Y
 		@{ kNameKey: @"Banana", 		kHexKey: @"#FFFF66" },
+		@{ kNameKey: @"Lemon", 			kHexKey: @"#FFFF00" }, //Y
+		@{ kNameKey: @"Asperagus", 		kHexKey: @"#808000" },
+		@{ kNameKey: @"Fern", 			kHexKey: @"#408000" },
 		@{ kNameKey: @"Honeydew", 		kHexKey: @"#CCFF66" },
+		@{ kNameKey: @"Clover", 		kHexKey: @"#008000" },
+		@{ kNameKey: @"Spring", 		kHexKey: @"#00FF00" }, ////G
 		@{ kNameKey: @"Lime", 			kHexKey: @"#80FF00" },
-		@{ kNameKey: @"Spring", 		kHexKey: @"#00FF00" }, //G
-		@{ kNameKey: @"Flora", 			kHexKey: @"#66FF66" },
+		@{ kNameKey: @"Moss", 			kHexKey: @"#008040" },
 		@{ kNameKey: @"Sea Foam", 		kHexKey: @"#00FF80" },
+		@{ kNameKey: @"Flora", 			kHexKey: @"#66FF66" },
 		@{ kNameKey: @"Spindrift", 		kHexKey: @"#66FFCC" },
-		@{ kNameKey: @"Turquoise", 		kHexKey: @"#00FFFF" }, //C
 		@{ kNameKey: @"Ice", 			kHexKey: @"#66FFFF" },
+		@{ kNameKey: @"Turquoise", 		kHexKey: @"#00FFFF" }, //C
+		@{ kNameKey: @"Teal", 			kHexKey: @"#008080" },
 		@{ kNameKey: @"Sky", 			kHexKey: @"#66CCFF" },
 		@{ kNameKey: @"Aqua", 			kHexKey: @"#0080FF" },
-		@{ kNameKey: @"Blueberry", 		kHexKey: @"#0000FF" }, //B
-		@{ kNameKey: @"Orchid",			kHexKey: @"#6666FF" },
+		@{ kNameKey: @"Ocean", 			kHexKey: @"#004080" },
+		@{ kNameKey: @"Blueberry", 		kHexKey: @"#0000FF" }, ////B
+		@{ kNameKey: @"Midnight", 		kHexKey: @"#000080" },
+		@{ kNameKey: @"Eggplant", 		kHexKey: @"#400080" },
+  		@{ kNameKey: @"Plum", 			kHexKey: @"#800080" },
 		@{ kNameKey: @"Grape", 			kHexKey: @"#8000FF" },
-		@{ kNameKey: @"Lavender", 		kHexKey: @"#CC66FF" },
+		@{ kNameKey: @"Orchid",			kHexKey: @"#6666FF" },
+  		@{ kNameKey: @"Lavender", 		kHexKey: @"#CC66FF" },
 		@{ kNameKey: @"BubbleGum", 		kHexKey: @"#FF66FF" },
+		@{ kNameKey: @"Strawberry", 	kHexKey: @"#FF0080" },
+		@{ kNameKey: @"Magenta", 		kHexKey: @"#FF00FF" }, //M
+		@{ kNameKey: @"Maroon", 		kHexKey: @"#800040" },
 		@{ kNameKey: @"Carnation", 		kHexKey: @"#FF6FCF" },
-		@{ kNameKey: @"Magenta", 		kHexKey: @"#FF00FF" } //M
-		
 	];
 }
 

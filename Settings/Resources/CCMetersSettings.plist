@@ -13,16 +13,10 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>
-To enable CCMeters open Settings &gt; CCLoader.</string>
-		</dict>
-		
-		<dict>
-			<key>cellClass</key>
+			<key>headerCellClass</key>
 			<string>CCMetersTitleCell</string>
-			<key>height</key>
-			<string>88</string>
+			<key>footerText</key>
+			<string>To enable CCMeters open Settings &gt; CCLoader.</string>
 		</dict>
 		
 		
