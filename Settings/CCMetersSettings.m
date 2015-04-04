@@ -55,7 +55,7 @@ static NSString * const kTextColorSpecID = @"Text Color";
 																	style:UIBarButtonItemStylePlain
 																   target:self
 																   action:@selector(showLove)];
-	heartButton.imageInsets = (UIEdgeInsets){1, 0, -1, 0};
+	heartButton.imageInsets = (UIEdgeInsets){2, 0, -2, 0};
 	//heartButton.tintColor = ???;
 	
 	[self.navigationItem setRightBarButtonItem:heartButton];
