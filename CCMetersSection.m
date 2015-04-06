@@ -250,6 +250,10 @@ static void settingsChanged(CFNotificationCenterRef center, void *observer,
 - (void)controlCenterWillAppear {
 	DebugLog0;
 	
+	// we don't really need to re-layout every time this is called,
+	// but it will catch orientation changes
+	[self updateLayout];
+		
 	// start updating meters !!!
 	[self startUpdating];
 }
